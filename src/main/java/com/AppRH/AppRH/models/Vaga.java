@@ -1,15 +1,18 @@
 package com.AppRH.AppRH.models;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
-import org.springframework.data.annotation.Id;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "")
 public class Vaga implements Serializable {
 
     @Serial
@@ -17,61 +20,61 @@ public class Vaga implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long code;
+    private long codigo;
 
-    @Column(nullable = false, length = 130)
-    private String name;
+    @NotEmpty
+    private String nome;
 
-    @Column(nullable = false, length = 400)
-    private String description;
+    @NotEmpty
+    private String descricao;
 
-    @Column(nullable = false, length = 11)
-    private String date;
+    @NotEmpty
+    private String data;
 
-    @Column(nullable = false, length = 30)
-    private String salary;
+    @NotEmpty
+    private String salario;
 
     @OneToMany(mappedBy = "vaga", cascade = CascadeType.REMOVE)
     private List<Candidates> candidates;
 
-    public long getCode() {
-        return code;
+    public long getCodigo() {
+        return codigo;
     }
 
-    public void setCode(long code) {
-        this.code = code;
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getDate() {
-        return date;
+    public String getData() {
+        return data;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public String getSalary() {
-        return salary;
+    public String getSalario() {
+        return salario;
     }
 
-    public void setSalary(String salary) {
-        this.salary = salary;
+    public void setSalario(String salario) {
+        this.salario = salario;
     }
 
     public List<Candidates> getCandidates() {
@@ -81,4 +84,8 @@ public class Vaga implements Serializable {
     public void setCandidates(List<Candidates> candidates) {
         this.candidates = candidates;
     }
+
+
+
+
 }
