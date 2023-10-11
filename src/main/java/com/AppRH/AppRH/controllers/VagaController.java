@@ -35,5 +35,4 @@ public class VagaController {
         attributes.addFlashAttribute("mensagem", "Vaga cadastrada com sucesso!");
         return "redirect:/cadastrarVaga";
     }
-
 }
