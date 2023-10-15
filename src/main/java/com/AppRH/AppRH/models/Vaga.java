@@ -1,6 +1,5 @@
 package com.AppRH.AppRH.models;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 import jakarta.persistence.CascadeType;
@@ -15,7 +14,6 @@ import jakarta.validation.constraints.NotEmpty;
 @Entity
 public class Vaga implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -35,7 +33,7 @@ public class Vaga implements Serializable {
     private String salario;
 
     @OneToMany(mappedBy = "vaga", cascade = CascadeType.REMOVE)
-    private List<Candidates> candidates;
+    private List<Candidato> candidates;
 
     public long getCodigo() {
         return codigo;
@@ -77,11 +75,11 @@ public class Vaga implements Serializable {
         this.salario = salario;
     }
 
-    public List<Candidates> getCandidates() {
+    public List<Candidato> getCandidates() {
         return candidates;
     }
 
-    public void setCandidates(List<Candidates> candidates) {
+    public void setCandidates(List<Candidato> candidates) {
         this.candidates = candidates;
     }
 

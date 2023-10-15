@@ -1,14 +1,11 @@
 package com.AppRH.AppRH.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
-public class Candidates {
+public class Candidato {
 
     @Id
     @GeneratedValue
@@ -18,7 +15,7 @@ public class Candidates {
     private String rg;
 
     @NotEmpty
-    private String nameCandidate;
+    private String nomeCandidato;
 
     @NotEmpty
     private String email;
@@ -34,12 +31,12 @@ public class Candidates {
         this.rg = rg;
     }
 
-    public String getNameCandidate() {
-        return nameCandidate;
+    public String getNomeCandidato() {
+        return nomeCandidato;
     }
 
-    public void setNameCandidate(String nameCandidate) {
-        this.nameCandidate = nameCandidate;
+    public void setNomeCandidato(String nomeCandidato) {
+        this.nomeCandidato = nomeCandidato;
     }
 
     public String getEmail() {
@@ -57,4 +54,7 @@ public class Candidates {
     public void setVaga(Vaga vaga) {
         this.vaga = vaga;
     }
+
+
+
 }
