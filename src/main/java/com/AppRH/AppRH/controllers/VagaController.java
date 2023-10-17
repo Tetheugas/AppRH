@@ -122,7 +122,18 @@ public class VagaController {
 
     }
 
-    
+    //Update da vaga
+    @RequestMapping(value = "/editar-vaga", method = RequestMethod.POST)
+    public String updateVaga(@Valid Vaga vaga, BindingResult result, RedirectAttributes attributes) {
+        vr.save(vaga);
+        attributes.addFlashAttribute("success", "Vaga alterada com sucesso!");
+
+        long codigoLong =  vaga.getCodigo();
+        String codigo = "" + codigoLong;
+        return "redirect:/" + codigo;
+        
+
+    }
 
 
 
