@@ -131,8 +131,6 @@ public class VagaController {
         long codigoLong =  vaga.getCodigo();
         String codigo = "" + codigoLong;
         return "redirect:/" + codigo;
-        
-
     }
 
 
