@@ -2,14 +2,14 @@ package com.AppRH.AppRH.models;
 
 import java.io.Serializable;
 import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-import jakarta.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Vaga implements Serializable {
@@ -33,7 +33,7 @@ public class Vaga implements Serializable {
     private String salario;
 
     @OneToMany(mappedBy = "vaga", cascade = CascadeType.REMOVE)
-    private List<Candidato> candidates;
+    private List<Candidato> candidatos;
 
     public long getCodigo() {
         return codigo;
@@ -75,12 +75,12 @@ public class Vaga implements Serializable {
         this.salario = salario;
     }
 
-    public List<Candidato> getCandidates() {
-        return candidates;
+    public List<Candidato> getCandidatos() {
+        return candidatos;
     }
 
-    public void setCandidates(List<Candidato> candidates) {
-        this.candidates = candidates;
+    public void setCandidatos(List<Candidato> candidatos) {
+        this.candidatos = candidatos;
     }
 
 
