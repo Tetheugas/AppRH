@@ -17,3 +17,6 @@ Aplicativo Recursos humanos, usando conhecimentos de java, e utilizando estudos 
 
 tecnologias usadas: MySQL, Thymeleaf para o front end,
 java e Spring & SpringBoot para o back end.
+
+
+https://www.youtube.com/@filosodev
