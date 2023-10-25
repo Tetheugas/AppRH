@@ -4,8 +4,6 @@
 
 Human Resources application, using Java knowledge, and using Spring & SpringBoot studies.
 
-Human Resources application, using Java knowledge, and using Spring & SpringBoot studies.
-
 technologies used: MySQL, Thymeleaf for the front end,
 java and Spring & SpringBoot for the back end.
 
