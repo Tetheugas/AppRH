@@ -30,17 +30,18 @@ public class FuncionarioController {
     public String form() {
         return "funcionario/formFuncionario";
     }
+
     // cadastrar os funcionarios
     @RequestMapping(value = "/cadastrarFuncionario", method = RequestMethod.POST)
     public String form(@Valid Funcionario funcionario, BindingResult result, RedirectAttributes attributes) {
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             attributes.addFlashAttribute("mensagem", "Verifique os campos");
             return "redirect:/cadastrarFuncionario";
         }
 
         fr.save(funcionario);
-        attributes.addFlashAttribute("mensagem","Funcionário cadastrado com sucesso!");
+        attributes.addFlashAttribute("mensagem", "Funcionário cadastrado com sucesso!");
         return "redirect:/cadastrarFuncionario";
 
     }
@@ -66,7 +67,28 @@ public class FuncionarioController {
         mv.addObject("dependentes", dependentes);
 
         return mv;
+    }
 
+    // Adicionar dependentes
+    @RequestMapping(value = "/dependentes/{id}", method = RequestMethod.POST)
+    public String dependentesPost(@PathVariable("id") long id, Dependentes dependentes, BindingResult result,
+                                  RedirectAttributes attributes) {
+
+        if(result.hasErrors()) {
+            attributes.addFlashAttribute("mensagem", "Verifique os campos");
+            return "redirect:/dependentes/{id}";
+        }
+
+        if(dr.findByCpf(dependentes.getCpf()) != null) {
+            attributes.addFlashAttribute("mensagem_erro", "CPF duplicado!");
+            return "redirect:/dependentes/{id}";
+        }
+
+        Funcionario funcionario = fr.findById(id);
+        dependentes.setFuncionario(funcionario);
+        dr.save(dependentes);
+        attributes.addFlashAttribute("mensagem", "Dependente adicionado com sucesso!");
+        return "redirect:/dependentes/{id}";
     }
 
 }
