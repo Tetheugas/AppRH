@@ -121,4 +121,16 @@ public class FuncionarioController {
         return "redirect:/dependentes/" + id;
     }
 
+    //Delete dependentes
+    @RequestMapping("/deletarDependente")
+    public String deletarDependente(String cpf) {
+        Dependentes dependente = dr.findByCpf(cpf);
+
+        Funcionario funcionario = dependente.getFuncionario();
+        String codigo = "" + funcionario.getId();
+
+        dr.delete(dependente);
+        return "redirect:dependentes/" + codigo;
+    }
+
 }
