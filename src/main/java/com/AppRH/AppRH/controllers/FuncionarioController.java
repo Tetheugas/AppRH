@@ -60,7 +60,7 @@ public class FuncionarioController {
     public ModelAndView dependentes(@PathVariable("id") long id) {
         Funcionario funcionario = fr.findById(id);
         ModelAndView mv = new ModelAndView("funcionario/dependentes");
-        mv.addObject("funcionario", funcionario);
+        mv.addObject("funcionarios", funcionario);
 
         // lista de dependentes baseada no funcionario
         Iterable<Dependentes> dependentes = dr.findByFuncionario(funcionario);
@@ -83,6 +83,12 @@ public class FuncionarioController {
             attributes.addFlashAttribute("mensagem_erro", "CPF duplicado!");
             return "redirect:/dependentes/{id}";
         }
+        for (int i = 0; i < dependentes.getCpf().length(); i++) {
+            if (!Character.isDigit(dependentes.getCpf().charAt(i))) {
+                attributes.addFlashAttribute("mensagem_erro","O CPF deve conter apenas números");
+                return "redirect:/dependentes/{id}";
+            }
+        }
 
         Funcionario funcionario = fr.findById(id);
         dependentes.setFuncionario(funcionario);
@@ -102,15 +108,15 @@ public class FuncionarioController {
     // metodos que atualizam funcionarios
     //form
     @RequestMapping(value = "/editar-funcionario", method = RequestMethod.GET)
-    public ModelAndView editarFuncionarios(long id) {
+    public ModelAndView editarFuncionario(long id) {
         Funcionario funcionario = fr.findById(id);
-        ModelAndView mv = new ModelAndView("funcionario/update-funcinario");
+        ModelAndView mv = new ModelAndView("funcionario/update-funcionario");
         mv.addObject("funcionario", funcionario);
         return mv;
     }
 
     // update funcionario
-    @RequestMapping(value = "editar-funcionario", method = RequestMethod.POST)
+    @RequestMapping(value = "/editar-funcionario", method = RequestMethod.POST)
     public String updateFuncionario(@Valid Funcionario funcionario, BindingResult result, RedirectAttributes attributes) {
 
         fr.save(funcionario);
