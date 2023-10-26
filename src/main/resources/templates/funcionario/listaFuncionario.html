@@ -60,6 +60,8 @@
 
 		<h1>Lista interna de funcionários</h1>
 
+		<th:block th:include="mensagemValidacao"></th:block>
+
 		<br>
 
 		<table class="table table-hover table-responsive w-auto table-striped">
@@ -74,16 +76,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<tr th:each="funcionario : ${funcionarios}">
 
-					<td><a href="#"><span></span></a></td>
-					<td><span></span></td>
-					<td><span></span></td>
-					<td><a href="#" class="waves-effect waves-light btn-small"><button type="button"
+					<td><a th:href="${(#mvc.url('FC#dependentes').arg(0, funcionario.id)).build()}"><span th:text="${funcionario.nome}"></span></a></td>
+					<td><span th:text="${funcionario.data}"></span></td>
+					<td><span th:text="${funcionario.email}"></span></td>
+					<td><a th:href="${(#mvc.url('FC#deletarFuncionario').arg(0, funcionario.id)).build()}" class="waves-effect waves-light btn-small"><button type="button"
 								class="btn btn-danger">Excluir</button></a></td>
-					<td><a href="#"><button type="button" class="btn btn-primary">Editar</button></a></td>
+					<td><a th:href="${(#mvc.url('FC#editarFuncionario').arg(0, funcionario.id)).build()}"><button type="button" class="btn btn-primary">Editar</button></a></td>
 
-					<td><a href="#"><button type="button" class="btn btn-success">Adicionar
+					<td><a th:href="${(#mvc.url('FC#dependentes').arg(0, funcionario.id)).build()}"><button type="button" class="btn btn-success">Adicionar
 								dependente</button></a></td>
 
 				</tr>
@@ -106,6 +108,7 @@
 			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 
 		</script>
+	</div>
 </body>
 
 </html>
