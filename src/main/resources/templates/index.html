@@ -159,21 +159,23 @@
 
                         <tbody>
                         <tr th:each="funcionario : ${funcionarios}">
-                            <td><a th:href="${(#mvc.url('FC#dependentes').arg(0, funcionario.id)).build()}"><span th:text="${funcionario.nome}"></span></a> - em <i>funcionários.</i></td>
+                            <td><a th:href="${(#mvc.url('FC#dependentes').arg(0, funcionario.id)).build()}"><span
+                                    th:text="${funcionario.nome}"></span></a> - em <i>funcionários.</i></td>
 
 
                         </tr>
-                        <tr>
-                            <td><a href=""><span></span></a> - em <i>vagas.</i></td>
+                        <tr th:each="vaga : ${vagas}">
+                            <td><a th:href="${(#mvc.url('VC#detalhesVaga').arg(0, vaga.codigo)).build()}"><span
+                                    th:text="${vaga.nome}"></span></a> - em <i>vagas.</i></td>
                         </tr>
 
 
-                        <tr>
-                            <td><span></span> - <i>em dependentes.</i></td>
+                        <tr th:each="dependente : ${dependentes}">
+                            <td><span th:text="${dependente.nome}"></span> - <i>em dependentes.</i></td>
                         </tr>
 
-                        <tr>
-                            <td><span></span> - <i>em candidatos.</i></td>
+                        <tr th:each="candidato : ${candidatos}">
+                            <td><span th:text="${candidato.nomeCandidato}"></span> - <i>em candidatos.</i></td>
                         </tr>
 
                         </tbody>
