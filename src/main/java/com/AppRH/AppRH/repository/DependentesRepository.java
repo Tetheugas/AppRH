@@ -2,6 +2,7 @@ package com.AppRH.AppRH.repository;
 
 import com.AppRH.AppRH.models.Dependentes;
 import com.AppRH.AppRH.models.Funcionario;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -15,5 +16,7 @@ public interface DependentesRepository extends CrudRepository<Dependentes, Strin
     Dependentes findById(long id);
 
     // created for implement
-    List<Dependentes> findByNome(String nome);
+
+    @Query(value = "select u from Dependentes u where u.nome like %?1%")
+    List<Dependentes> findByNomesDependentes(String nome);
 }
