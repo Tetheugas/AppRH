@@ -6,6 +6,7 @@ target/
 
 !**/src/test/**/target/
 *application.properties
+*application.yml
 *DataConfiguration.java
 
 ### STS ###
